@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'graphql', '~> 1.10', '>= 1.10.5'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'devise-jwt', '~> 0.6.0'
 gem 'pry-rails', '~> 0.3.9'
 
 group :development, :test do
