@@ -1,6 +1,7 @@
 module Types
   class UserType < Types::BaseObject
-    field :email, String, null: true
+    field :id, ID, null: false
+    field :email, String, null: false
     field :referral_token, String, null: true
   end
 end

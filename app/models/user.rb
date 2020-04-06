@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   before_create :generate_referral_token
 
+  belongs_to :referrer, class_name: 'User', optional: true
+
   private
 
   def generate_referral_token
