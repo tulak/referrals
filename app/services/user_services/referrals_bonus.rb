@@ -2,8 +2,8 @@ module UserServices
   class ReferralsBonus
     AMOUNT = 10
     MIN_REFERRALS_COUNT = 5
-    def self.apply(user)
-      self.new(user).apply
+    def self.apply_if_applicable(user)
+      self.new(user).apply_if_applicable
     end
 
     attr_reader :user
@@ -12,7 +12,7 @@ module UserServices
       @user = user
     end
 
-    def apply
+    def apply_if_applicable
       ApplicationRecord.transaction do
         user.with_lock do
           return false unless applicable?

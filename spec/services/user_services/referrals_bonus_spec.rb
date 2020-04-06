@@ -19,7 +19,7 @@ RSpec.describe UserServices::ReferralsBonus do
     end
   end
 
-  subject { described_class.apply(user) }
+  subject { described_class.apply_if_applicable(user) }
   let(:user) { create(:user) }
 
   context 'user without referrals' do

@@ -49,7 +49,7 @@ RSpec.describe Mutations::Auth::Register, graphql: true do
     end
 
     it 'calls bonus services' do
-      expect(UserServices::ReferredBonus).to receive(:apply)
+      expect(UserServices::ReferredBonus).to receive(:apply_if_applicable)
       response
     end
   end
@@ -75,8 +75,8 @@ RSpec.describe Mutations::Auth::Register, graphql: true do
     end
 
     it 'calls bonus services' do
-      expect(UserServices::ReferredBonus).to receive(:apply)
-      expect(UserServices::ReferralsBonus).to receive(:apply)
+      expect(UserServices::ReferredBonus).to receive(:apply_if_applicable)
+      expect(UserServices::ReferralsBonus).to receive(:apply_if_applicable)
       response
     end
   end

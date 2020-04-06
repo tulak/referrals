@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UserServices::ReferredBonus do
-  subject { described_class.apply(user) }
+  subject { described_class.apply_if_applicable(user) }
 
   context 'user without referrer' do
     let(:user) { create(:user) }
