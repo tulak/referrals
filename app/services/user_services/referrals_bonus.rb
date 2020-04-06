@@ -30,7 +30,7 @@ module UserServices
 
     def applicable?
       return false if user.referred_users.count < MIN_REFERRALS_COUNT
-      return false if user.transactions.referred_bonus.any?
+      return false if user.transactions.referrals_bonus.any?
 
       true
     end
