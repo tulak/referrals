@@ -29,7 +29,7 @@ RSpec.describe Mutations::Auth::Register, graphql: true do
   let(:response) { schema_execute(mutation_string, variables: variables) }
   let(:variables) {
     {
-      email: 'test1@example.com',
+      email: 'new_user@example.com',
       password: password,
       passwordConfirmation: password_confirmation,
       referralToken: referral_token
@@ -45,6 +45,11 @@ RSpec.describe Mutations::Auth::Register, graphql: true do
       expect(response.dig('data', 'register', 'errors')).to be_nil
       expect(response.dig('data', 'register', 'success')).to eql true
       expect(User.count).to eql 1
+    end
+
+    it 'calls bonus services' do
+      expect(UserServices::ReferredBonus).to receive(:apply)
+      response
     end
   end
 
@@ -66,6 +71,12 @@ RSpec.describe Mutations::Auth::Register, graphql: true do
       new_user_id = response.dig('data', 'register', 'user', 'id')
       new_user = User.find(new_user_id)
       expect(new_user.referrer).to eql referrer
+    end
+
+    it 'calls bonus services' do
+      expect(UserServices::ReferredBonus).to receive(:apply)
+      expect(UserServices::ReferralsBonus).to receive(:apply)
+      response
     end
   end
 end

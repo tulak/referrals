@@ -18,6 +18,8 @@ module Mutations
           referrer: find_referrer(referral_token)
         )
         if user.save
+          UserServices::ReferredBonus.apply(user)
+          UserServices::ReferralsBonus.apply(user.referrer) if user.referrer
           return { success: true, user: user }
         else
           return { success: false, errors: user.errors.full_messages }

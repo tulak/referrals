@@ -9,6 +9,12 @@ class User < ApplicationRecord
   before_create :generate_referral_token
 
   belongs_to :referrer, class_name: 'User', optional: true
+  has_many :transactions
+  has_many :referred_users, class_name: 'User', foreign_key: :referrer_id
+
+  def balance
+    transactions.sum(:amount)
+  end
 
   private
 
