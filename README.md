@@ -13,6 +13,16 @@ The application implements 2 types of rewards that can be achieved upon registra
 
 **ReferralsBonus** adds fixed amount to user's account if 5 new users registered using user's **referral token**
 
+
+# Design Decisions
+
+Ruby on Rails, PostgreSQL, RSpec and Graphql was used because of my personal preference. The `devise` and `devise-jwt` gems were used for authentication instead of implementing custom authentication method because it is battle tested by the community.
+
+Two different rewards were identified and implemented as separate service objects. Unit and integration tests are used to 
+maintain working functionality of these objects.
+
+The account balance was implemented using **Transaction** model to support extensibility.
+
 # API Methods
 
 The application implements following GraphQL Schema:
