@@ -1,6 +1,6 @@
 # Description
 
-Ruby on Rails application implementing an API using GraphQL. The API listens on path `/graphql` and responds to `POST` requests. In development mode `/graphiql` endpoint is available to explore the API using graphical tool called GraphiQL.
+Ruby on Rails application implementing an API using GraphQL. The API listens on path `/graphql` and responds to `POST` requests. The `/graphiql` endpoint is available to explore the API using graphical tool called GraphiQL.
 PostgreSQL is used as database for **ActiveRecord**
 
 # Architecture
