@@ -66,6 +66,7 @@ type User {
   referralToken: String
 }
 ```
+It is expected for the front-end developer to understand how GraphQL API works and how to use the schema types.
 
 # Authentication
 
